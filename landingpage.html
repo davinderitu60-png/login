@@ -1,0 +1,1569 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DreamHomes | Find Your Dream Home</title>
+
+    <style>
+        
+/* =========================
+   GENERAL SETTINGS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    height: 80px;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+
+    padding: 0 7%;
+
+    background: white;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #111;
+}
+
+.logo span,
+.footer-logo span {
+    color: #b38b59;
+}
+
+.navbar nav {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.navbar nav a {
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #b38b59;
+}
+
+.login-btn {
+    justify-self: end;
+
+    border: none;
+    background: #111;
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #b38b59;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    height: 700px;
+
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+}
+
+.hero > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    position: absolute;
+    inset: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.48);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 850px;
+    max-width: 90%;
+
+    text-align: center;
+
+    color: white;
+}
+
+.small-title {
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 85px);
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #d8b07a;
+}
+
+.hero-text {
+    max-width: 650px;
+    margin: auto;
+
+    font-size: 19px;
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.primary-btn,
+.secondary-btn,
+.cta-btn {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border-radius: 4px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: #b38b59;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #947044;
+}
+
+.secondary-btn {
+    border: 2px solid white;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background: white;
+    color: #111;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-section {
+    position: relative;
+    margin-top: -55px;
+    z-index: 10;
+
+    padding: 0 7%;
+}
+
+.search-box {
+    background: white;
+
+    padding: 25px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 20px;
+
+    align-items: end;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+.search-item {
+    display: grid;
+    gap: 8px;
+}
+
+.search-item label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.search-item input,
+.search-item select {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #ddd;
+
+    outline: none;
+}
+
+.search-btn {
+    height: 46px;
+
+    padding: 0 30px;
+
+    border: none;
+
+    background: #111;
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.search-btn:hover {
+    background: #b38b59;
+}
+
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.section-heading p,
+.section-label {
+    color: #b38b59;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+.section-heading span {
+    color: #777;
+}
+
+
+/* =========================
+   PROPERTIES
+========================= */
+
+.properties-section {
+    padding: 110px 7%;
+}
+
+.property-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.property-card {
+    background: white;
+
+    border: 1px solid #eee;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.property-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.property-image {
+    height: 260px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.08);
+}
+
+.status {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    background: #b38b59;
+
+    color: white;
+
+    padding: 7px 13px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.property-info {
+    padding: 25px;
+}
+
+.property-info h3 {
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.location {
+    color: #777;
+
+    margin-bottom: 20px;
+}
+
+.property-details {
+    display: flex;
+
+    gap: 15px;
+
+    font-size: 13px;
+
+    color: #666;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.property-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 20px;
+}
+
+.property-bottom strong {
+    font-size: 18px;
+}
+
+.property-bottom a {
+    color: #b38b59;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-section {
+    padding: 100px 7%;
+
+    background: #f7f5f1;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.about-image {
+    height: 550px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.about-content h2 {
+    font-size: 48px;
+
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+.about-content p {
+    color: #666;
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services-section {
+    padding: 100px 7%;
+}
+
+.services-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.service-card {
+    text-align: center;
+
+    padding: 40px 25px;
+
+    border: 1px solid #eee;
+
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.service-icon {
+    font-size: 40px;
+
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #777;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta-section {
+    min-height: 400px;
+
+    display: grid;
+    place-items: center;
+
+    text-align: center;
+
+    padding: 60px 7%;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)
+        ),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.cta-section p {
+    color: #d8b07a;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.cta-section h2 {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.cta-section span {
+    color: #ddd;
+}
+
+.cta-btn {
+    background: #b38b59;
+
+    color: white;
+}
+
+.cta-btn:hover {
+    background: white;
+
+    color: #111;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+    padding: 100px 7%;
+}
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+}
+
+.contact-info h3 {
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: #666;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+.contact-form {
+    display: grid;
+
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #ddd;
+
+    outline: none;
+
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #b38b59;
+}
+
+.contact-form button {
+    padding: 15px;
+
+    border: none;
+
+    background: #111;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.contact-form button:hover {
+    background: #b38b59;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #111;
+
+    color: white;
+
+    padding: 70px 7% 20px;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr;
+
+    gap: 50px;
+
+    padding-bottom: 50px;
+}
+
+.footer-logo {
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #aaa;
+
+    line-height: 1.7;
+}
+
+.footer-grid h3 {
+    margin-bottom: 20px;
+}
+
+.footer-grid a {
+    display: block;
+
+    color: #aaa;
+
+    margin-bottom: 12px;
+
+    transition: 0.3s;
+}
+
+.footer-grid a:hover {
+    color: #b38b59;
+}
+
+.copyright {
+    border-top: 1px solid #333;
+
+    padding-top: 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        grid-template-columns: 1fr auto;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .property-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .search-box {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .login-btn {
+        display: none;
+    }
+
+    .hero {
+        height: 600px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-section {
+        padding: 70px 5%;
+    }
+
+    .about-content h2 {
+        font-size: 36px;
+    }
+
+    .cta-section h2 {
+        font-size: 34px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Dream<span>Homes</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#properties">Properties</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="login-btn">Sign In</button>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero" id="home">
+
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+             alt="Modern house">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <p class="small-title">WELCOME TO DREAMHOMES</p>
+
+            <h1>
+                Find Your
+                <span>Dream Home</span>
+            </h1>
+
+            <p class="hero-text">
+                Discover beautiful homes, apartments and villas
+                in the best locations at prices you'll love.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#properties" class="primary-btn">
+                    Explore Properties
+                </a>
+
+                <a href="#contact" class="secondary-btn">
+                    Contact Agent
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SEARCH SECTION ================= -->
+
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <div class="search-item">
+
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    placeholder="e.g. Nairobi, Kiambu">
+
+            </div>
+
+
+            <div class="search-item">
+
+                <label>Property Type</label>
+
+                <select>
+
+                    <option>All Properties</option>
+                    <option>House</option>
+                    <option>Apartment</option>
+                    <option>Villa</option>
+                    <option>Townhouse</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="search-item">
+
+                <label>Price Range</label>
+
+                <select>
+
+                    <option>Any Price</option>
+                    <option>Below KSh 5M</option>
+                    <option>KSh 5M - 10M</option>
+                    <option>KSh 10M - 20M</option>
+                    <option>Above KSh 20M</option>
+
+                </select>
+
+            </div>
+
+
+            <button class="search-btn">
+                Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURED PROPERTIES ================= -->
+
+    <section class="properties-section" id="properties">
+
+        <div class="section-heading">
+
+            <p>OUR PROPERTIES</p>
+
+            <h2>Featured Properties</h2>
+
+            <span>
+                Explore some of our most beautiful properties
+                available for sale.
+            </span>
+
+        </div>
+
+
+        <div class="property-grid">
+
+
+            <!-- PROPERTY 1 -->
+
+            <div class="property-card">
+
+                <div class="property-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+                        alt="Luxury house">
+
+                    <span class="status">
+                        For Sale
+                    </span>
+
+                </div>
+
+
+                <div class="property-info">
+
+                    <h3>Modern Luxury Villa</h3>
+
+                    <p class="location">
+                        📍 Karen, Nairobi
+                    </p>
+
+                    <div class="property-details">
+
+                        <span>🛏 4 Beds</span>
+                        <span>🚿 3 Baths</span>
+                        <span>📐 2,500 sq.ft</span>
+
+                    </div>
+
+                    <div class="property-bottom">
+
+                        <strong>
+                            KSh 18,500,000
+                        </strong>
+
+                        <a href="#">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROPERTY 2 -->
+
+            <div class="property-card">
+
+                <div class="property-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80"
+                        alt="Modern home">
+
+                    <span class="status">
+                        For Sale
+                    </span>
+
+                </div>
+
+
+                <div class="property-info">
+
+                    <h3>Beautiful Family Home</h3>
+
+                    <p class="location">
+                        📍 Runda, Nairobi
+                    </p>
+
+                    <div class="property-details">
+
+                        <span>🛏 5 Beds</span>
+                        <span>🚿 4 Baths</span>
+                        <span>📐 3,200 sq.ft</span>
+
+                    </div>
+
+                    <div class="property-bottom">
+
+                        <strong>
+                            KSh 25,000,000
+                        </strong>
+
+                        <a href="#">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROPERTY 3 -->
+
+            <div class="property-card">
+
+                <div class="property-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80"
+                        alt="Family house">
+
+                    <span class="status">
+                        For Sale
+                    </span>
+
+                </div>
+
+
+                <div class="property-info">
+
+                    <h3>Elegant Family House</h3>
+
+                    <p class="location">
+                        📍 Kiambu, Kenya
+                    </p>
+
+                    <div class="property-details">
+
+                        <span>🛏 3 Beds</span>
+                        <span>🚿 2 Baths</span>
+                        <span>📐 1,800 sq.ft</span>
+
+                    </div>
+
+                    <div class="property-bottom">
+
+                        <strong>
+                            KSh 8,500,000
+                        </strong>
+
+                        <a href="#">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROPERTY 4 -->
+
+            <div class="property-card">
+
+                <div class="property-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80"
+                        alt="Modern villa">
+
+                    <span class="status">
+                        For Sale
+                    </span>
+
+                </div>
+
+
+                <div class="property-info">
+
+                    <h3>Contemporary Villa</h3>
+
+                    <p class="location">
+                        📍 Limuru, Kenya
+                    </p>
+
+                    <div class="property-details">
+
+                        <span>🛏 4 Beds</span>
+                        <span>🚿 4 Baths</span>
+                        <span>📐 2,800 sq.ft</span>
+
+                    </div>
+
+                    <div class="property-bottom">
+
+                        <strong>
+                            KSh 15,000,000
+                        </strong>
+
+                        <a href="#">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROPERTY 5 -->
+
+            <div class="property-card">
+
+                <div class="property-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"
+                        alt="Luxury home">
+
+                    <span class="status">
+                        For Sale
+                    </span>
+
+                </div>
+
+
+                <div class="property-info">
+
+                    <h3>Luxury Modern Home</h3>
+
+                    <p class="location">
+                        📍 Lavington, Nairobi
+                    </p>
+
+                    <div class="property-details">
+
+                        <span>🛏 5 Beds</span>
+                        <span>🚿 4 Baths</span>
+                        <span>📐 3,500 sq.ft</span>
+
+                    </div>
+
+                    <div class="property-bottom">
+
+                        <strong>
+                            KSh 30,000,000
+                        </strong>
+
+                        <a href="#">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROPERTY 6 -->
+
+            <div class="property-card">
+
+                <div class="property-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80"
+                        alt="Modern townhouse">
+
+                    <span class="status">
+                        For Sale
+                    </span>
+
+                </div>
+
+
+                <div class="property-info">
+
+                    <h3>Modern Townhouse</h3>
+
+                    <p class="location">
+                        📍 Syokimau, Kenya
+                    </p>
+
+                    <div class="property-details">
+
+                        <span>🛏 4 Beds</span>
+                        <span>🚿 3 Baths</span>
+                        <span>📐 2,200 sq.ft</span>
+
+                    </div>
+
+                    <div class="property-bottom">
+
+                        <strong>
+                            KSh 11,500,000
+                        </strong>
+
+                        <a href="#">
+                            View →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about-section" id="about">
+
+        <div class="about-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
+                alt="Beautiful home">
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p class="section-label">
+                ABOUT DREAMHOMES
+            </p>
+
+            <h2>
+                Helping You Find
+                The Perfect Place
+                To Call Home
+            </h2>
+
+            <p>
+                At DreamHomes, we connect buyers with quality
+                properties in some of the best locations.
+            </p>
+
+            <p>
+                Our experienced property agents make the process
+                of finding and buying your dream home simple,
+                transparent and stress-free.
+            </p>
+
+            <a href="#" class="primary-btn">
+                Learn More
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WHY CHOOSE US ================= -->
+
+    <section class="services-section" id="services">
+
+        <div class="section-heading">
+
+            <p>WHY CHOOSE US</p>
+
+            <h2>We Make Buying Easy</h2>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🏠
+                </div>
+
+                <h3>Quality Properties</h3>
+
+                <p>
+                    We carefully select quality homes
+                    in desirable locations.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🔑
+                </div>
+
+                <h3>Easy Buying</h3>
+
+                <p>
+                    Our team makes the property buying
+                    process simple and convenient.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🤝
+                </div>
+
+                <h3>Trusted Agents</h3>
+
+                <p>
+                    Work with professional agents who
+                    understand the property market.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    ⭐
+                </div>
+
+                <h3>Great Service</h3>
+
+                <p>
+                    We are committed to providing
+                    excellent customer service.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta-section">
+
+        <div>
+
+            <p>
+                FIND YOUR PERFECT HOME
+            </p>
+
+            <h2>
+                Ready To Find Your Dream Home?
+            </h2>
+
+            <span>
+                Browse our properties and find a place
+                that feels like home.
+            </span>
+
+            <br><br>
+
+            <a href="#properties" class="cta-btn">
+                View Properties
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="section-heading">
+
+            <p>CONTACT US</p>
+
+            <h2>Let's Find Your Home</h2>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+
+                <h3>Get In Touch</h3>
+
+                <p>
+                    Have a question about a property?
+                    Contact our team today.
+                </p>
+
+                <p>📍 Nairobi, Kenya</p>
+
+                <p>📞 +254 700 000 000</p>
+
+                <p>✉ info@dreamhomes.com</p>
+
+            </div>
+
+
+            <form class="contact-form">
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required>
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required>
+
+                <input
+                    type="text"
+                    placeholder="Phone Number">
+
+                <textarea
+                    placeholder="How can we help you?"
+                    rows="6"></textarea>
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h2 class="footer-logo">
+                    Dream<span>Homes</span>
+                </h2>
+
+                <p>
+                    Helping you find a place
+                    you'll love to call home.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <a href="#home">Home</a>
+                <a href="#properties">Properties</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div>
+
+                <h3>Contact</h3>
+
+                <p>Nairobi, Kenya</p>
+                <p>+254 700 000 000</p>
+                <p>info@dreamhomes.com</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            <p>
+                © 2026 DreamHomes. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
+```
